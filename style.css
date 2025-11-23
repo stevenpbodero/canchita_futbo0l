@@ -1,227 +1,106 @@
-/* ----- ESTILO GLOBAL ----- */
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background: #0c0c0c;
-    color: white;
-    animation: fadeIn 0.6s ease-in;
+/* --- Fondo global (usa la imagen que subiste) --- */
+:root { --accent: #00d4ff; --glass: rgba(255,255,255,0.08); }
+
+body, html {
+  height: 100%;
+  margin: 0;
+  font-family: Inter, system-ui, Arial, sans-serif;
+  color: #979393;
 }
 
-/* Fade-in general */
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to   { opacity: 1; transform: translateY(0); }
+/* background image path (usa exactamente la ruta donde subiste la imagen) */
+.bg-image {
+  background: linear-gradient(rgba(4,14,30,0.6), rgba(4,14,30,0.6)),
+    url("fondo.png") center/cover no-repeat;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-/* Efecto glow deportivo */
-.glow {
-    box-shadow: 0 0 20px rgba(0,255,100,0.5);
-    transition: 0.3s;
-}
-.glow:hover {
-    box-shadow: 0 0 35px rgba(0,255,100,0.9);
-}
-
-/* ----- LOGIN / REGISTRO ----- */
-.auth-body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+/* Glass card */
+.glass {
+  background: var(--glass);
+  backdrop-filter: blur(10px);
+  border-radius: 14px;
+  padding: 22px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.45);
 }
 
+/* Auth card */
 .auth-card {
-    background: #151515;
-    padding: 25px;
-    width: 350px;
-    border-radius: 14px;
-    text-align: center;
-    border: 1px solid #00ff6a55;
-    transition: 0.3s;
-    animation: popIn 0.5s ease;
+  width: 360px;
+  text-align: center;
 }
 
-/* Animación al aparecer */
-@keyframes popIn {
-    from { transform: scale(0.9); opacity: 0; }
-    to   { transform: scale(1); opacity: 1; }
+.auth-card h2 { margin-bottom: 10px; color: var(--accent); font-size: 28px; }
+
+.form input {
+  width: 100%;
+  padding: 12px 14px;
+  margin: 10px 0;
+  border-radius: 10px;
+  border: none;
+  background: rgba(255,255,255,0.09);
+  color: #ccc6c6;
+  font-size: 15px;
 }
 
-.auth-card:hover {
-    transform: scale(1.02);
-    box-shadow: 0 0 25px rgba(0,255,100,0.3);
+.form button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 8px;
+  border-radius: 10px;
+  border: none;
+  background: var(--accent);
+  color: #00121a;
+  font-weight: 700;
+  cursor: pointer;
 }
 
-.auth-card input {
-    width: 100%;
-    padding: 12px;
-    margin: 10px 0;
-    border: none;
-    border-radius: 8px;
-    background: #222;
-    color: white;
-    transition: 0.2s;
-}
-
-.auth-card input:focus {
-    outline: none;
-    box-shadow: 0 0 10px #00ff6a;
-}
-
-.auth-card button {
-    width: 100%;
-    padding: 12px;
-    background: #00ff6a;
-    color: black;
-    font-weight: bold;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    margin-top: 10px;
-    transition: 0.3s;
-}
-
-.auth-card button:hover {
-    background: #00d95a;
-    transform: scale(1.05);
-    box-shadow: 0 0 15px #00ff6a;
-}
-
-.auth-card a {
-    color: #00ff6a;
-    text-decoration: none;
-}
-
-.auth-card a:hover {
-    text-decoration: underline;
-}
-
-/* ----- TOPBAR ----- */
+/* Topbar */
 .topbar {
-    background: #101010;
-    padding: 15px 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 1px solid #00ff6a55;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 22px;
+  background: linear-gradient(90deg, rgba(0,0,0,0.6), rgba(0,0,0,0.4));
+  color: #fff;
 }
 
-.topbar h1 {
-    text-shadow: 0 0 10px #00ff6a;
-    animation: neonPulse 2.5s infinite alternate ease-in-out;
-}
-
-/* Pulsación del logo */
-@keyframes neonPulse {
-    from { text-shadow: 0 0 5px #00ff6a; }
-    to   { text-shadow: 0 0 25px #00ff6a; }
-}
-
-.topbar nav a {
-    color: #00ff6a;
-    margin-right: 15px;
-    text-decoration: none;
-    transition: 0.3s;
-}
-
-.topbar nav a:hover {
-    color: white;
-    text-shadow: 0 0 10px #00ff6a;
-}
-
-.topbar button {
-    padding: 8px 15px;
-    background: #00ff6a;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-.topbar button:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 12px #00ff6a;
-}
-
-/* ----- CONTENIDO HOME ----- */
+/* Container */
 .container {
-    padding: 25px;
-    max-width: 550px;
-    margin: auto;
+  max-width: 900px;
+  margin: 28px auto;
+  padding: 0 18px 40px 18px;
 }
 
-h2 {
-    text-shadow: 0 0 8px #00ff6a;
+/* Card styles */
+.card { margin: 14px 0; padding: 18px; border-radius: 12px; }
+label { display:block; margin-top:8px; color:#828686; font-weight:600; }
+select, input[type="date"], input[type="time"] {
+  width:100%; padding:10px; margin-top:6px; border-radius:8px; border:none;
+  background: rgba(255,255,255,0.06); color:#828686;
 }
 
-.card {
-    background: #151515;
-    padding: 20px;
-    border-radius: 12px;
-    border: 1px solid #00ff6a55;
-    box-shadow: 0 0 10px rgba(0,255,100,0.2);
-    transition: 0.3s;
-    animation: fadeIn 0.6s ease;
+/* Mini reservas */
+.mini { margin-top: 18px; }
+.reserva-item { padding:10px; margin-bottom:8px; background: rgba(255,255,255,0.04); border-radius:8px; }
+
+/* Mis reservas list */
+.reservas-list { margin-top: 12px; }
+.btn-cancel {
+  margin-top:8px;
+  padding:8px 10px; border:none; border-radius:8px; background:#ff6666; cursor:pointer; color:#001;
 }
 
-.card:hover {
-    transform: scale(1.01);
-    box-shadow: 0 0 25px rgba(0,255,100,0.4);
-}
+/* util */
+.small { font-size:13px; opacity:0.9; margin-top:12px; color:#cfeffb; }
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
 
-.card select,
-.card input {
-    width: 100%;
-    margin-top: 8px;
-    padding: 12px;
-    border-radius: 8px;
-    background: #222;
-    border: none;
-    color: white;
-    transition: 0.2s;
-}
-
-.card select:focus,
-.card input:focus {
-    outline: none;
-    box-shadow: 0 0 10px #00ff6a;
-}
-
-.card button {
-    margin-top: 15px;
-    width: 100%;
-    padding: 12px;
-    background: #00ff6a;
-    color: black;
-    border: none;
-    border-radius: 8px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-.card button:hover {
-    background: #00d95a;
-    transform: scale(1.05);
-    box-shadow: 0 0 15px #00ff6a;
-}
-
-/* ----- MIS RESERVAS ----- */
-.reservas-list {
-    margin-top: 15px;
-}
-
-.reserva-item {
-    background: #1a1a1a;
-    padding: 12px;
-    margin-top: 10px;
-    border-radius: 8px;
-    border-left: 4px solid #00ff6a;
-    transition: 0.3s;
-}
-
-.reserva-item:hover {
-    transform: scale(1.02);
-    background: #222;
-    box-shadow: 0 0 12px rgba(0,255,100,0.4);
+/* responsive */
+@media (max-width:720px){
+  .auth-card { width: 92%; padding:18px; }
+  .container { padding: 0 14px; }
 }

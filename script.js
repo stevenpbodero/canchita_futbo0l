@@ -1,89 +1,214 @@
-// REGISTRO
-function register() {
-    let name = document.getElementById("regName").value;
-    let email = document.getElementById("regEmail").value;
-    let pass = document.getElementById("regPass").value;
+/* -----------------------
+   Datos iniciales en localStorage
+   ----------------------- */
+(function initStorage() {
+  // usuarios: array de usuarios {user, pass, email}
+  if (!localStorage.getItem('usuarios')) {
+    const defaultUsers = [
+      { user: 'admin', pass: 'admin123', email: 'admin@playzone.local' }
+    ];
+    localStorage.setItem('usuarios', JSON.stringify(defaultUsers));
+  }
 
-    if (!name || !email || !pass) {
-        alert("Completa todos los campos");
-        return;
+  // canchas: array de strings (nombre)
+  if (!localStorage.getItem('canchas')) {
+    localStorage.setItem('canchas', JSON.stringify(['Fútbol Sintético','Vóley','Basket']));
+  }
+
+  // reservas: array global {user, cancha, fecha, hora, id}
+  if (!localStorage.getItem('reservas')) {
+    localStorage.setItem('reservas', JSON.stringify([]));
+  }
+})();
+
+/* -----------------------
+   Helpers
+   ----------------------- */
+function getUsuarios() { return JSON.parse(localStorage.getItem('usuarios') || '[]'); }
+function saveUsuarios(u){ localStorage.setItem('usuarios', JSON.stringify(u)); }
+
+function getCanchas(){ return JSON.parse(localStorage.getItem('canchas') || '[]'); }
+function saveCanchas(c){ localStorage.setItem('canchas', JSON.stringify(c)); }
+
+function getReservas(){ return JSON.parse(localStorage.getItem('reservas') || '[]'); }
+function saveReservas(r){ localStorage.setItem('reservas', JSON.stringify(r)); }
+
+function currentUser(){ return sessionStorage.getItem('playzone_user') || null; }
+
+/* -----------------------
+   Autenticación
+   ----------------------- */
+function login(e){
+  if (e) e.preventDefault();
+  const user = document.getElementById('loginUser')?.value?.trim();
+  const pass = document.getElementById('loginPass')?.value?.trim();
+
+  if (!user || !pass) return alert('Completa usuario y contraseña');
+
+  const usuarios = getUsuarios();
+  const found = usuarios.find(u => (u.user === user || u.email === user) && u.pass === pass);
+
+  if (!found) return alert('Usuario o contraseña incorrectos');
+
+  // guardar sesión en sessionStorage (se borra al cerrar navegador)
+  sessionStorage.setItem('playzone_user', found.user);
+  // marcar logged para compatibilidad con páginas previas
+  localStorage.setItem('logged', 'true');
+
+  // redirigir a home
+  location.href = 'home.html';
+}
+
+function register(e){
+  if (e) e.preventDefault();
+  const user = document.getElementById('regUser')?.value?.trim();
+  const email = document.getElementById('regEmail')?.value?.trim();
+  const pass = document.getElementById('regPass')?.value?.trim();
+
+  if (!user || !pass) return alert('Completa usuario y contraseña');
+
+  const usuarios = getUsuarios();
+  if (usuarios.some(u => u.user === user || (email && u.email === email))) {
+    return alert('Usuario o correo ya registrado');
+  }
+
+  usuarios.push({ user, pass, email: email || '' });
+  saveUsuarios(usuarios);
+
+  alert('Registro exitoso. Ya puedes iniciar sesión.');
+  location.href = 'index.html';
+}
+
+function logout(){
+  sessionStorage.removeItem('playzone_user');
+  localStorage.removeItem('logged');
+  location.href = 'index.html';
+}
+
+/* -----------------------
+   Protección simple de páginas
+   ----------------------- */
+(function protectPages(){
+  const path = location.pathname.split('/').pop();
+  const protectedPages = ['home.html','misreservas.html'];
+  if (protectedPages.includes(path)) {
+    if (!sessionStorage.getItem('playzone_user') && localStorage.getItem('logged') !== 'true') {
+      location.href = 'index.html';
     }
+  }
+})();
 
-    let user = { name, email, pass, reservas: [] };
-    localStorage.setItem("user", JSON.stringify(user));
-
-    alert("Registro exitoso");
-    window.location.href = "index.html";
+/* -----------------------
+   Gestión de canchas
+   ----------------------- */
+function cargarCanchasEnSelect(){
+  const sel = document.getElementById('cancha');
+  if (!sel) return;
+  const canchas = getCanchas();
+  sel.innerHTML = '';
+  if (canchas.length === 0) {
+    sel.innerHTML = '<option value="">No hay canchas</option>';
+    return;
+  }
+  canchas.forEach(c => {
+    const opt = document.createElement('option');
+    opt.value = c;
+    opt.textContent = c;
+    sel.appendChild(opt);
+  });
 }
 
-// LOGIN
-function login() {
-    let email = document.getElementById("loginEmail").value;
-    let pass = document.getElementById("loginPass").value;
-
-    let user = JSON.parse(localStorage.getItem("user"));
-
-    if (!user || email !== user.email || pass !== user.pass) {
-        alert("Datos incorrectos");
-        return;
-    }
-
-    localStorage.setItem("logged", "true");
-    window.location.href = "home.html";
+// cuando se carga la página reservar -> mini lista
+function actualizarMiniReservas(){
+  const cont = document.getElementById('miniReservas');
+  if (!cont) return;
+  const reservas = getReservas().filter(r => r.user === currentUser());
+  cont.innerHTML = '';
+  reservas.slice(0,5).forEach(r => {
+    const d = document.createElement('div');
+    d.className = 'reserva-item';
+    d.innerHTML = `<strong>${r.cancha}</strong><div>${r.fecha} • ${r.hora}</div>`;
+    cont.appendChild(d);
+  });
 }
 
-// PROTEGER PÁGINAS
-if (location.pathname.includes("home") || location.pathname.includes("misreservas")) {
-    if (!localStorage.getItem("logged")) {
-        location.href = "index.html";
-    }
+/* -----------------------
+   Reservas
+   ----------------------- */
+function reservar(){
+  const cancha = document.getElementById('cancha')?.value;
+  const fecha = document.getElementById('fecha')?.value;
+  const hora = document.getElementById('hora')?.value;
+
+  if (!cancha) return alert('Selecciona una cancha');
+  if (!fecha || !hora) return alert('Selecciona fecha y hora');
+
+  // Prevent double booking for the same cancha at same date/time
+  const reservas = getReservas();
+  const clash = reservas.find(r => r.cancha === cancha && r.fecha === fecha && r.hora === hora);
+  if (clash) return alert('Ya existe una reserva para esa cancha en esa fecha/hora');
+
+  const reserva = {
+    id: Date.now(),
+    user: currentUser() || 'invitado',
+    cancha, fecha, hora
+  };
+  reservas.push(reserva);
+  saveReservas(reservas);
+
+  alert('Reserva registrada correctamente');
+  actualizarMiniReservas();
 }
 
-// RESERVAR
-function reservar() {
-    let cancha = document.getElementById("cancha").value;
-    let fecha = document.getElementById("fecha").value;
-    let hora = document.getElementById("hora").value;
+/* -----------------------
+   Mostrar mis reservas en misreservas.html
+   ----------------------- */
+(function cargarMisReservas(){
+  if (!document.getElementById('resList')) return;
+  const cont = document.getElementById('resList');
+  cont.innerHTML = '';
+  const reservas = getReservas().filter(r => r.user === currentUser());
+  if (reservas.length === 0) {
+    cont.innerHTML = '<p>No tienes reservas.</p>';
+    return;
+  }
+  reservas.forEach(r => {
+    const div = document.createElement('div');
+    div.className = 'reserva-item glass';
+    div.innerHTML = `
+      <h4>${r.cancha}</h4>
+      <p>Fecha: ${r.fecha} · Hora: ${r.hora}</p>
+      <button onclick="cancelarReserva(${r.id})" class="btn-cancel">Cancelar</button>
+    `;
+    cont.appendChild(div);
+  });
+})();
 
-    if (!fecha || !hora) {
-        alert("Completa todos los campos");
-        return;
-    }
-
-    let user = JSON.parse(localStorage.getItem("user"));
-
-    user.reservas.push({ cancha, fecha, hora });
-
-    localStorage.setItem("user", JSON.stringify(user));
-
-    alert("Reserva registrada");
+/* -----------------------
+   Cancelar reserva
+   ----------------------- */
+function cancelarReserva(id){
+  if (!confirm('¿Eliminar esta reserva?')) return;
+  let reservas = getReservas();
+  reservas = reservas.filter(r => r.id !== id);
+  saveReservas(reservas);
+  location.reload();
 }
 
-// VER RESERVAS
-if (location.pathname.includes("misreservas")) {
-    let list = document.getElementById("resList");
-    let user = JSON.parse(localStorage.getItem("user"));
-
-    user.reservas.forEach(r => {
-        list.innerHTML += `
-            <div class="reserva-item">
-                <strong>${r.cancha}</strong><br>
-                Fecha: ${r.fecha}<br>
-                Hora: ${r.hora}
-            </div>
-        `;
-    });
+/* -----------------------
+   ADMIN: agregar cancha desde admin.html (si la tienes)
+   ----------------------- */
+function agregarCanchaDesdeAdmin(nombre){
+  if (!nombre) return;
+  const canchas = getCanchas();
+  canchas.push(nombre);
+  saveCanchas(canchas);
 }
 
-// LOGOUT
-function logout() {
-    localStorage.removeItem("logged");
-    window.location.href = "index.html";
-}
-// Animación rápida en los botones al hacer clic
-document.querySelectorAll("button").forEach(btn => {
-    btn.addEventListener("click", () => {
-        btn.style.transform = "scale(0.95)";
-        setTimeout(() => btn.style.transform = "scale(1)", 150);
-    });
+/* -----------------------
+   Cargar canchas en todas las páginas relevantes al iniciar
+   ----------------------- */
+document.addEventListener('DOMContentLoaded', function(){
+  cargarCanchasEnSelect();
+  actualizarMiniReservas();
 });

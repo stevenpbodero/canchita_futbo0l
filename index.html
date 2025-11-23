@@ -1,25 +1,29 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <title>PlayZone - Login</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="utf-8">
+  <title>PlayZone - Login</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="stylesheet" href="style.css">
 </head>
-<body class="auth-body">
+<body class="bg-image">
 
-    <div class="auth-card">
-        <h2>Iniciar Sesión</h2>
+  <div class="auth-card glass">
+    <h2>PlayZone</h2>
 
-        <input id="loginEmail" type="email" placeholder="Correo">
-        <input id="loginPass" type="password" placeholder="Contraseña">
+    <form onsubmit="login(event)" class="form">
+      <input id="loginUser" type="text" placeholder="Usuario (ej: admin)" autocomplete="username">
+      <input id="loginPass" type="password" placeholder="Contraseña" autocomplete="current-password">
+      <button type="submit">Ingresar</button>
+    </form>
 
-        <button onclick="login()">Ingresar</button>
+    <p class="small">¿No tienes cuenta? <a href="register.html">Registrarse</a></p>
+  </div>
 
-        <p>¿No tienes cuenta?  
-            <a href="register.html">Crear cuenta</a>
-        </p>
-    </div>
-
-    <script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
+
+
+
+
