@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>PlayZone - Reservar</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <h1>PlayZone</h1>
+  <nav>
+    <a href="misreservas.html">Mis Reservas</a>
+    <a href="index.html" onclick="logout()">Salir</a>
+  </nav>
+</header>
+
+<main class="container">
+  <h2>Reservar Cancha</h2>
+
+  <div class="card glass">
+    <label>Cancha</label>
+    <select id="cancha"></select>
+
+    <label>Fecha</label>
+    <input id="fecha" type="date">
+
+    <label>Hora</label>
+    <input id="hora" type="time">
+
+    <button onclick="reservar()">Reservar</button>
+  </div>
+
+  <section class="mini">
+    <h3>Próximas reservas</h3>
+    <div id="miniReservas"></div>
+  </section>
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>
+
+

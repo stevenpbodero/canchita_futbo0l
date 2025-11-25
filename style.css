@@ -1,0 +1,106 @@
+/* --- Fondo global (usa la imagen que subiste) --- */
+:root { --accent: #00d4ff; --glass: rgba(255,255,255,0.08); }
+
+body, html {
+  height: 100%;
+  margin: 0;
+  font-family: Inter, system-ui, Arial, sans-serif;
+  color: #979393;
+}
+
+/* background image path (usa exactamente la ruta donde subiste la imagen) */
+.bg-image {
+  background: linear-gradient(rgba(4,14,30,0.6), rgba(4,14,30,0.6)),
+    url("fondo.png") center/cover no-repeat;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Glass card */
+.glass {
+  background: var(--glass);
+  backdrop-filter: blur(10px);
+  border-radius: 14px;
+  padding: 22px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.45);
+}
+
+/* Auth card */
+.auth-card {
+  width: 360px;
+  text-align: center;
+}
+
+.auth-card h2 { margin-bottom: 10px; color: var(--accent); font-size: 28px; }
+
+.form input {
+  width: 100%;
+  padding: 12px 14px;
+  margin: 10px 0;
+  border-radius: 10px;
+  border: none;
+  background: rgba(255,255,255,0.09);
+  color: #ccc6c6;
+  font-size: 15px;
+}
+
+.form button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 8px;
+  border-radius: 10px;
+  border: none;
+  background: var(--accent);
+  color: #00121a;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+/* Topbar */
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 22px;
+  background: linear-gradient(90deg, rgba(0,0,0,0.6), rgba(0,0,0,0.4));
+  color: #fff;
+}
+
+/* Container */
+.container {
+  max-width: 900px;
+  margin: 28px auto;
+  padding: 0 18px 40px 18px;
+}
+
+/* Card styles */
+.card { margin: 14px 0; padding: 18px; border-radius: 12px; }
+label { display:block; margin-top:8px; color:#828686; font-weight:600; }
+select, input[type="date"], input[type="time"] {
+  width:100%; padding:10px; margin-top:6px; border-radius:8px; border:none;
+  background: rgba(255,255,255,0.06); color:#828686;
+}
+
+/* Mini reservas */
+.mini { margin-top: 18px; }
+.reserva-item { padding:10px; margin-bottom:8px; background: rgba(255,255,255,0.04); border-radius:8px; }
+
+/* Mis reservas list */
+.reservas-list { margin-top: 12px; }
+.btn-cancel {
+  margin-top:8px;
+  padding:8px 10px; border:none; border-radius:8px; background:#ff6666; cursor:pointer; color:#001;
+}
+
+/* util */
+.small { font-size:13px; opacity:0.9; margin-top:12px; color:#cfeffb; }
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* responsive */
+@media (max-width:720px){
+  .auth-card { width: 92%; padding:18px; }
+  .container { padding: 0 14px; }
+}
