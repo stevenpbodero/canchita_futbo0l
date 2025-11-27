@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <title>PlayZone - Reservar</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style1.css">
 </head>
 <body>
 
@@ -19,18 +19,27 @@
 <main class="container">
   <h2>Reservar Cancha</h2>
 
-  <div class="card glass">
-    <label>Cancha</label>
-    <select id="cancha"></select>
+<div class="card glass reserve-card">
 
-    <label>Fecha</label>
-    <input id="fecha" type="date">
+  <label>Cancha</label>
+  <select id="cancha"></select>
 
-    <label>Hora</label>
-    <input id="hora" type="time">
+  <label>Fecha</label>
+  <input id="fecha" type="date">
 
-    <button onclick="reservar()">Reservar</button>
-  </div>
+  <label>Hora</label>
+  <input id="hora" type="time">
+
+  <label for="comprobante" style="margin-top: 15px;">Comprobante de pago</label>
+  <input type="file"
+         id="comprobante"
+         accept="image/*"
+         capture="camera">
+
+  <img id="preview"
+       style="width: 180px; margin-top: 12px; display:none; border-radius: 10px;">
+  <button onclick="reservar()" style="margin-top: 18px;">Reservar</button>
+</div>
 
   <section class="mini">
     <h3>Próximas reservas</h3>
