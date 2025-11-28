@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>PlayZone - Reservar Cancha</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<header class="topbar">
+    <h1>PlayZone</h1>
+    <nav>
+        <a href="/html/misreservas.html">Mis Reservas</a>
+        <button onclick="logout()">Salir</button>
+    </nav>
+</header>
+
+<div class="container">
+    <h2>Reservar Cancha</h2>
+
+    <div class="card">
+        <label>Selecciona la cancha:</label>
+        <select id="cancha">
+            <option>Fútbol Sintético</option>
+            <option>Vóley</option>
+            <option>Basket</option>
+        </select>
+
+        <label>Fecha:</label>
+        <input id="fecha" type="date">
+
+        <label>Hora:</label>
+        <input id="hora" type="time">
+
+        <button onclick="reservar()">Reservar</button>
+    </div>
+</div>
+
+<script src="/js/script.js"></script>
+</body>
+</html>

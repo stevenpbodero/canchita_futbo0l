@@ -1,0 +1,230 @@
+/* ----- ESTILO GLOBAL ----- */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #0c0c0c;
+    color: white;
+    animation: fadeIn 0.6s ease-in;
+}
+
+/* Fade-in general */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Efecto glow deportivo */
+.glow {
+    box-shadow: 0 0 20px rgba(0,255,100,0.5);
+    transition: 0.3s;
+}
+.glow:hover {
+    box-shadow: 0 0 35px rgba(0,255,100,0.9);
+}
+
+/* ----- LOGIN / REGISTRO ----- */
+.auth-body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: url('/img/fondo.png');
+}
+
+
+
+.auth-card {
+    background: #151515;
+    padding: 25px;
+    width: 350px;
+    border-radius: 14px;
+    text-align: center;
+    border: 1px solid #00ff6a55;
+    transition: 0.3s;
+    animation: popIn 0.5s ease;
+}
+
+/* Animación al aparecer */
+@keyframes popIn {
+    from { transform: scale(0.9); opacity: 0; }
+    to   { transform: scale(1); opacity: 1; }
+}
+
+.auth-card:hover {
+    transform: scale(1.02);
+    box-shadow: 0 0 25px rgba(0,255,100,0.3);
+}
+
+.auth-card input {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 8px;
+    background: #222;
+    color: white;
+    transition: 0.2s;
+}
+
+.auth-card input:focus {
+    outline: none;
+    box-shadow: 0 0 10px #00ff6a;
+}
+
+.auth-card button {
+    width: 100%;
+    padding: 12px;
+    background: #00ff6a;
+    color: black;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: 0.3s;
+}
+
+.auth-card button:hover {
+    background: #00d95a;
+    transform: scale(1.05);
+    box-shadow: 0 0 15px #00ff6a;
+}
+
+.auth-card a {
+    color: #00ff6a;
+    text-decoration: none;
+}
+
+.auth-card a:hover {
+    text-decoration: underline;
+}
+
+/* ----- TOPBAR ----- */
+.topbar {
+    background: #101010;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #00ff6a55;
+}
+
+.topbar h1 {
+    text-shadow: 0 0 10px #00ff6a;
+    animation: neonPulse 2.5s infinite alternate ease-in-out;
+}
+
+/* Pulsación del logo */
+@keyframes neonPulse {
+    from { text-shadow: 0 0 5px #00ff6a; }
+    to   { text-shadow: 0 0 25px #00ff6a; }
+}
+
+.topbar nav a {
+    color: #00ff6a;
+    margin-right: 15px;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.topbar nav a:hover {
+    color: white;
+    text-shadow: 0 0 10px #00ff6a;
+}
+
+.topbar button {
+    padding: 8px 15px;
+    background: #00ff6a;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.topbar button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 12px #00ff6a;
+}
+
+/* ----- CONTENIDO HOME ----- */
+.container {
+    padding: 25px;
+    max-width: 550px;
+    margin: auto;
+}
+
+h2 {
+    text-shadow: 0 0 8px #00ff6a;
+}
+
+.card {
+    background: #151515;
+    padding: 20px;
+    border-radius: 12px;
+    border: 1px solid #00ff6a55;
+    box-shadow: 0 0 10px rgba(0,255,100,0.2);
+    transition: 0.3s;
+    animation: fadeIn 0.6s ease;
+}
+
+.card:hover {
+    transform: scale(1.01);
+    box-shadow: 0 0 25px rgba(0,255,100,0.4);
+}
+
+.card select,
+.card input {
+    width: 100%;
+    margin-top: 8px;
+    padding: 12px;
+    border-radius: 8px;
+    background: #222;
+    border: none;
+    color: white;
+    transition: 0.2s;
+}
+
+.card select:focus,
+.card input:focus {
+    outline: none;
+    box-shadow: 0 0 10px #00ff6a;
+}
+
+.card button {
+    margin-top: 15px;
+    width: 100%;
+    padding: 12px;
+    background: #00ff6a;
+    color: black;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.card button:hover {
+    background: #00d95a;
+    transform: scale(1.05);
+    box-shadow: 0 0 15px #00ff6a;
+}
+
+/* ----- MIS RESERVAS ----- */
+.reservas-list {
+    margin-top: 15px;
+}
+
+.reserva-item {
+    background: #1a1a1a;
+    padding: 12px;
+    margin-top: 10px;
+    border-radius: 8px;
+    border-left: 4px solid #00ff6a;
+    transition: 0.3s;
+}
+
+.reserva-item:hover {
+    transform: scale(1.02);
+    background: #222;
+    box-shadow: 0 0 12px rgba(0,255,100,0.4);
+}
