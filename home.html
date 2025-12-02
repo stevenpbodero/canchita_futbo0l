@@ -1,53 +1,40 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8">
-  <title>PlayZone - Reservar</title>
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <link rel="stylesheet" href="style1.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Fútbol</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <nav class="navbar">
+        <div class="logo">FÚTBOL</div>
+        <ul class="nav-menu">
+            <li><a href="index.html">HOME</a></li>
+        </ul>
+    </nav>
 
-<header class="topbar">
-  <h1>PlayZone</h1>
-  <nav>
-    <a href="misreservas.html">Mis Reservas</a>
-    <a href="index.html" onclick="logout()">Salir</a>
-  </nav>
-</header>
+    <section class="hero">
+        <div class="login-container">
+            <h2>Login</h2>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label>Nombre de usuario</label>
+                    <input type="text" id="username" required>
+                </div>
+                <div class="form-group">
+                    <label>Contraseña</label>
+                    <input type="password" id="password" required>
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="btn-cancelar">INGRESAR</button>
+                    <a href="register.html" class="link-register">Registrarse aquí</a>
+                </div>
+            </form>
+        </div>
+    </section>
 
-<main class="container">
-  <h2>Reservar Cancha</h2>
-
-<div class="card glass reserve-card">
-
-  <label>Cancha</label>
-  <select id="cancha"></select>
-
-  <label>Fecha</label>
-  <input id="fecha" type="date">
-
-  <label>Hora</label>
-  <input id="hora" type="time">
-
-  <label for="comprobante" style="margin-top: 15px;">Comprobante de pago</label>
-  <input type="file"
-         id="comprobante"
-         accept="image/*"
-         capture="camera">
-
-  <img id="preview"
-       style="width: 180px; margin-top: 12px; display:none; border-radius: 10px;">
-  <button onclick="reservar()" style="margin-top: 18px;">Reservar</button>
-</div>
-
-  <section class="mini">
-    <h3>Próximas reservas</h3>
-    <div id="miniReservas"></div>
-  </section>
-</main>
-
-<script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
 

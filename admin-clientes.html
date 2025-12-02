@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Clientes</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="admin-layout">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h2>Administrador</h2>
+                <button class="menu-toggle">☰</button>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="admin.html" class="nav-item">
+                    <span class="icon">🏠</span> Volver
+                </a>
+                <a href="admin-clientes.html" class="nav-item active">
+                    <span class="icon">👥</span> Lista de Clientes
+                </a>
+            </nav>
+        </aside>
+
+        <main class="admin-main">
+            <header class="admin-header">
+                <button class="btn-logout" onclick="location.href='index.html'">Cerrar Sesión</button>
+            </header>
+
+            <div class="admin-content">
+                <h1 class="page-title">LISTA DE CLIENTES</h1>
+                
+                <div class="search-bar">
+                    <input type="text" placeholder="BUSCAR" class="search-input">
+                </div>
+
+                <table class="admin-table">
+                    <thead>
+                        <tr>
+                            <th>Rut cliente</th>
+                            <th>Nombre cliente</th>
+                            <th>Números de usuario</th>
+                            <th>E-mail</th>
+                            <th>Perfil</th>
+                            <th>Acción</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>123456678</td>
+                            <td>test1001</td>
+                            <td>856</td>
+                            <td>prueba</td>
+                            <td><button class="btn-action green">Verificar Reservas</button></td>
+                            <td>
+                                <button class="btn-action red">Eliminar Reservas</button>
+                                <button class="btn-action yellow">Actualizar Reservas</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>654321012</td>
+                            <td>manuel.gonzalez</td>
+                            <td>admin@ca</td>
+                            <td>companyreservas@cancha.cl</td>
+                            <td><button class="btn-action green">Verificar Reservas</button></td>
+                            <td>
+                                <button class="btn-action red">Eliminar Reservas</button>
+                                <button class="btn-action yellow">Actualizar Reservas</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>132165474</td>
+                            <td>natalia.martinez</td>
+                            <td>enatalia@</td>
+                            <td>companyreservas@cancha.cl</td>
+                            <td><button class="btn-action green">Verificar Reservas</button></td>
+                            <td>
+                                <button class="btn-action red">Eliminar Reservas</button>
+                                <button class="btn-action yellow">Actualizar Reservas</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="pagination">
+                    <button class="btn-nav">Anterior</button>
+                    <span class="page-number">1</span>
+                    <button class="btn-nav">Siguiente</button>
+                </div>
+
+                <footer class="admin-footer">
+                    <p>Todos los derechos reservados © 2017.</p>
+                </footer>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

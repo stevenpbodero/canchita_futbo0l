@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Realizar Reservas</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="admin-layout">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h2>Administrador</h2>
+                <button class="menu-toggle">☰</button>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="admin.html" class="nav-item">
+                    <span class="icon">🏠</span> Volver
+                </a>
+                <a href="admin-reservas.html" class="nav-item active">
+                    <span class="icon">📋</span> Realizar Reserva
+                </a>
+            </nav>
+        </aside>
+
+        <main class="admin-main">
+            <header class="admin-header">
+                <button class="btn-logout" onclick="location.href='index.html'">Cerrar Sesión</button>
+            </header>
+
+            <div class="admin-content">
+                <h1 class="page-title">Realizar Reservas</h1>
+                
+                <div class="reserva-split">
+                    <form id="formReserva" class="form-admin-reserva">
+                        <div class="form-group">
+                            <label>Usuario(I.D) †</label>
+                            <input type="text" placeholder="1" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Ingresa un ID (Cancha) *</label>
+                            <input type="text" placeholder="Ingrese ID(cancha)" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Ingresa un ID (Hora) †</label>
+                            <input type="text" placeholder="Ingrese ID" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Selecciona una fecha *</label>
+                            <input type="date" value="2017-11-23" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Tipo de cancha †</label>
+                            <select required>
+                                <option value="">futbol</option>
+                                <option value="futbol">Fútbol</option>
+                                <option value="baby">Baby Fútbol</option>
+                            </select>
+                        </div>
+
+                        <button type="submit" class="btn-reservar-admin">Reservar</button>
+                    </form>
+
+                    <div class="horas-table-container">
+                        <h3>Listado de horas</h3>
+                        <table class="mini-table">
+                            <thead>
+                                <tr>
+                                    <th>Estado</th>
+                                    <th>Inicio</th>
+                                    <th>Hora Fin</th>
+                                    <th>ID Cancha</th>
+                                    <th>Disponibilidad</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><button class="btn-status red">Eliminar hora</button></td>
+                                    <td>14:00</td>
+                                    <td>16:00</td>
+                                    <td>futbol</td>
+                                    <td>cancha futbol 1</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <footer class="admin-footer">
+                    <p>Todos los derechos reservados © 2017.</p>
+                </footer>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

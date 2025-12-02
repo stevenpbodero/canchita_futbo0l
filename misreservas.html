@@ -1,39 +1,62 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8">
-  <title>PlayZone - Mis Reservas</title>
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <link rel="stylesheet" href="style1.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mis Reservas - Fútbol</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <nav class="navbar">
+        <div class="logo">FÚTBOL</div>
+        <ul class="nav-menu">
+            <li><a href="index.html">HOME</a></li>
+            <li><a href="misreservas.html">RESERVAS</a></li>
+            <li><a href="#">LISTADO RESERVAS</a></li>
+            <li><a href="#">ACTUALIZAR PERFIL</a></li>
+            <li><a href="index.html">CERRAR SESIÓN</a></li>
+        </ul>
+    </nav>
 
-<header class="topbar">
-  <h1>PlayZone</h1>
-  <nav>
-    <a href="home.html">Reservar</a>
-    <a href="index.html" onclick="logout()">Salir</a>
-  </nav>
-</header>
+    <section class="hero">
+        <div class="reservas-container">
+            <h1>MIS RESERVAS</h1>
+            <button class="btn-buscar">Buscar</button>
+            
+            <div class="buscar-section">
+                <label>Indice: </label>
+                <input type="text" placeholder="Buscar...">
+                <label>Siguiente</label>
+            </div>
 
-<main class="container">
-  <h2>Mis Reservas</h2>
+            <table class="reservas-table">
+                <thead>
+                    <tr>
+                        <th>Indice(i)</th>
+                        <th>Tipo de cancha</th>
+                        <th>Nombre de cancha</th>
+                        <th>Fecha</th>
+                        <th>Hora de inicio</th>
+                        <th>Hora de fin</th>
+                        <th>Estado</th>
+                    </tr>
+                </thead>
+                <tbody id="reservasBody">
+                    <!-- Reservas se cargan dinámicamente -->
+                </tbody>
+            </table>
+            
+            <div class="pagination">
+                <button class="btn-nav">Anterior</button>
+                <button class="btn-nav">Siguiente</button>
+            </div>
+        </div>
+    </section>
 
-  <div id="resList" class="reservas-list"></div>
-
-  <section class="reportes">
-      <h3>Descargar Reportes</h3>
-
-      <div class="botones-reportes">
-          <a href="reporte_diario.xlsx" download class="btn-reporte">📅 Reporte Diario</a>
-          <a href="reporte_mensual.xlsx" download class="btn-reporte">🗓️ Reporte Mensual</a>
-          <a href="reporte_anual.xlsx" download class="btn-reporte">📊 Reporte Anual</a>
-      </div>
-  </section>
-
-</main>
-
-<script src="script.js"></script>
+    <script src="script.js"></script>
+    <script>
+        loadReservas();
+    </script>
 </body>
 </html>
 

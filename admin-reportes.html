@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reportes</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="admin-layout">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h2>Administrador</h2>
+                <button class="menu-toggle">☰</button>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="admin.html" class="nav-item">
+                    <span class="icon">🏠</span> Volver
+                </a>
+                <a href="admin-reportes.html" class="nav-item active">
+                    <span class="icon">📊</span> Reportes
+                </a>
+            </nav>
+        </aside>
+
+        <main class="admin-main">
+            <header class="admin-header">
+                <button class="btn-logout" onclick="location.href='index.html'">Cerrar Sesión</button>
+            </header>
+
+            <div class="admin-content">
+                <h1 class="page-title">REPORTES</h1>
+                
+                <div class="reportes-grid">
+                    <div class="reporte-card">
+                        <h3>Reservas por cancha</h3>
+                        <p>Total de canchas utilizadas</p>
+                        <div class="chart-pie">
+                            <svg viewBox="0 0 200 200">
+                                <circle cx="100" cy="100" r="80" fill="#3b82f6" stroke="#fff" stroke-width="2"/>
+                                <path d="M 100 100 L 100 20 A 80 80 0 0 1 165 65 Z" fill="#ef4444" stroke="#fff" stroke-width="2"/>
+                                <path d="M 100 100 L 165 65 A 80 80 0 0 1 180 100 Z" fill="#f59e0b" stroke="#fff" stroke-width="2"/>
+                                <path d="M 100 100 L 180 100 A 80 80 0 0 1 100 180 Z" fill="#10b981" stroke="#fff" stroke-width="2"/>
+                            </svg>
+                        </div>
+                        <div class="legend">
+                            <div><span class="dot blue"></span> cancha 1 (5)</div>
+                            <div><span class="dot red"></span> cancha 2 (2)</div>
+                            <div><span class="dot yellow"></span> cancha 3 (1)</div>
+                            <div><span class="dot green"></span> cancha 4 (1)</div>
+                        </div>
+                    </div>
+
+                    <div class="reporte-card">
+                        <h3>Reservas por cliente</h3>
+                        <div class="chart-bar">
+                            <canvas id="barChart" width="400" height="300"></canvas>
+                            <div class="bars">
+                                <div class="bar" style="height: 180px; background: #3b82f6;"></div>
+                                <div class="bar" style="height: 80px; background: #3b82f6;"></div>
+                                <div class="bar" style="height: 40px; background: #3b82f6;"></div>
+                                <div class="bar" style="height: 20px; background: #3b82f6;"></div>
+                            </div>
+                            <div class="bar-labels">
+                                <span>ultimacancha</span>
+                                <span>1962223314</span>
+                                <span>futbol1</span>
+                                <span>natalia.martinez</span>
+                            </div>
+                        </div>
+                        <button class="btn-imprimir">Imprimir</button>
+                    </div>
+                </div>
+
+                <footer class="admin-footer">
+                    <p>Todos los derechos reservados © 2017.</p>
+                </footer>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Reservas</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="admin-layout">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h2>Administrador</h2>
+                <button class="menu-toggle">☰</button>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="admin.html" class="nav-item">
+                    <span class="icon">🏠</span> Volver
+                </a>
+                <a href="admin-lista-reservas.html" class="nav-item active">
+                    <span class="icon">📝</span> Lista de Reservas
+                </a>
+            </nav>
+        </aside>
+
+        <main class="admin-main">
+            <header class="admin-header">
+                <button class="btn-logout" onclick="location.href='index.html'">Cerrar Sesión</button>
+            </header>
+
+            <div class="admin-content">
+                <h1 class="page-title">LISTA DE RESERVAS</h1>
+                
+                <div class="actions-bar">
+                    <button class="btn-action green">Descargar PDF</button>
+                    <button class="btn-action blue">Ver Reserva PDF</button>
+                </div>
+
+                <div class="search-bar">
+                    <input type="text" placeholder="BUSCAR" class="search-input">
+                </div>
+
+                <table class="admin-table">
+                    <thead>
+                        <tr>
+                            <th>Indice</th>
+                            <th>Cancha</th>
+                            <th>Hora Inicio</th>
+                            <th>Hora Fin</th>
+                            <th>Tipo de cancha</th>
+                            <th>Nombre cancha</th>
+                            <th>Rut</th>
+                            <th>Estado</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tablaReservasAdmin">
+                        <tr>
+                            <td>0.000</td>
+                            <td>14-11-2017</td>
+                            <td>00:00</td>
+                            <td>10:00</td>
+                            <td>futbol</td>
+                            <td>cancha futbol 1</td>
+                            <td>ultimacancha</td>
+                            <td><button class="btn-status green">solicitud completa</button></td>
+                        </tr>
+                        <tr>
+                            <td>0.000</td>
+                            <td>14-11-2017</td>
+                            <td>10:00</td>
+                            <td>11:00</td>
+                            <td>futbol</td>
+                            <td>cancha futbol 1</td>
+                            <td>ultimacancha</td>
+                            <td><button class="btn-status red">solicitud pendiente</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="pagination">
+                    <button class="btn-nav">Anterior</button>
+                    <span class="page-number">1</span>
+                    <button class="btn-nav">Siguiente</button>
+                </div>
+
+                <footer class="admin-footer">
+                    <p>Todos los derechos reservados © 2017.</p>
+                </footer>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

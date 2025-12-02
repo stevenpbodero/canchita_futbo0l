@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro Área TI</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="admin-layout">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h2>Administrador</h2>
+                <button class="menu-toggle">☰</button>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="admin.html" class="nav-item">
+                    <span class="icon">🏠</span> Volver
+                </a>
+                <a href="registro-ti.html" class="nav-item active">
+                    <span class="icon">💻</span> Registrar TI
+                </a>
+            </nav>
+        </aside>
+
+        <main class="admin-main">
+            <header class="admin-header">
+                <button class="btn-logout" onclick="location.href='index.html'">Cerrar Sesión</button>
+            </header>
+
+            <div class="admin-content">
+                <h1 class="page-title">Formulario de registro área TI</h1>
+                
+                <form id="formTI" class="form-registro-central">
+                    <div class="form-group">
+                        <label>Nombre *</label>
+                        <input type="text" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Apellido *</label>
+                        <input type="text" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Rut *</label>
+                        <input type="text" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Correo *</label>
+                        <input type="email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Teléfono *</label>
+                        <input type="tel" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Dirección *</label>
+                        <input type="text" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Usuario *</label>
+                        <input type="text" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Contraseña *</label>
+                        <input type="password" required>
+                    </div>
+
+                    <button type="submit" class="btn-registrar">Registrar</button>
+                </form>
+
+                <footer class="admin-footer">
+                    <p>Todos los derechos reservados © 2017.</p>
+                </footer>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

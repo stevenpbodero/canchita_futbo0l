@@ -1,26 +1,52 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8">
-  <title>PlayZone - Login</title>
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reserva tu Cancha de Fútbol</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-<body class="bg-image">
+<body>
+    <nav class="navbar">
+        <div class="logo">FÚTBOL</div>
+        <ul class="nav-menu">
+            <li><a href="index.html">HOME</a></li>
+            <li><a href="#" onclick="checkLogin()">MIS RESERVAS</a></li>
+        </ul>
+    </nav>
 
-  <div class="auth-card glass">
-    <h2>PlayZone</h2>
+    <section class="hero">
+        <div class="hero-content">
+            <h1>YA PUEDES RESERVAR ONLINE</h1>
+            <h2>TU CANCHA DE FÚTBOL AQUÍ !!!</h2>
+        </div>
+    </section>
 
-    <form onsubmit="login(event)" class="form">
-      <input id="loginUser" type="text" placeholder="Usuario (ej: admin)" autocomplete="username">
-      <input id="loginPass" type="password" placeholder="Contraseña" autocomplete="current-password">
-      <button type="submit">Ingresar</button>
-    </form>
+    <section class="canchas-section">
+        <h2>VISITA NUESTRAS CANCHAS AQUÍ</h2>
+        <div class="canchas-grid">
+            <div class="cancha-card">
+                <img src="https://via.placeholder.com/300x200/4a5568/ffffff?text=Cancha" alt="Fútbol">
+                <h3>FÚTBOL</h3>
+                <button class="btn-reservar" onclick="goToReservas()">Reservar</button>
+            </div>
+            <div class="cancha-card">
+                <img src="https://via.placeholder.com/300x200/4a5568/ffffff?text=Cancha" alt="Fútbol">
+                <h3>FÚTBOL</h3>
+                <button class="btn-reservar" onclick="goToReservas()">Reservar</button>
+            </div>
+            <div class="cancha-card baby">
+                <h3>BABY FÚTBOL</h3>
+                <button class="btn-reservar" onclick="goToReservas()">Reservar</button>
+            </div>
+            <div class="cancha-card info">
+                <h3>¿FUTURO LLEGAR?</h3>
+                <div class="icon">🚗</div>
+            </div>
+        </div>
+    </section>
 
-    <p class="small">¿No tienes cuenta? <a href="register.html">Registrarse</a></p>
-  </div>
-
-  <script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
 

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel Administrador</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="admin-layout">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h2>Administrador</h2>
+                <button class="menu-toggle">☰</button>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="admin.html" class="nav-item active">
+                    <span class="icon">🏠</span> Volver
+                </a>
+                <a href="admin-canchas.html" class="nav-item">
+                    <span class="icon">⚽</span> Administrar Canchas
+                </a>
+                <a href="admin-horas.html" class="nav-item">
+                    <span class="icon">⏰</span> Asignar Horas
+                </a>
+                <a href="admin-reservas.html" class="nav-item">
+                    <span class="icon">📋</span> Realizar Reserva
+                </a>
+                <a href="admin-lista-reservas.html" class="nav-item">
+                    <span class="icon">📝</span> Lista de Reservas
+                </a>
+                <a href="admin-clientes.html" class="nav-item">
+                    <span class="icon">👥</span> Lista de Clientes
+                </a>
+                <a href="admin-lista-negra.html" class="nav-item">
+                    <span class="icon">🚫</span> Lista Negra
+                </a>
+                <a href="admin-control-acceso.html" class="nav-item">
+                    <span class="icon">🔐</span> Control de Acceso
+                </a>
+                <a href="admin-reportes.html" class="nav-item">
+                    <span class="icon">📊</span> Reportes
+                </a>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="admin-main">
+            <header class="admin-header">
+                <button class="btn-logout" onclick="location.href='index.html'">Cerrar Sesión</button>
+            </header>
+
+            <div class="admin-content">
+                <div class="welcome-section">
+                    <img src="https://via.placeholder.com/400x300/4ade80/ffffff?text=Bienvenido" alt="Admin" class="welcome-img">
+                    <h1>Bienvenido al Panel de Administración</h1>
+                    <p>Selecciona una opción del menú lateral para comenzar</p>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="scripts.js"></script>
+</body>
+</html>

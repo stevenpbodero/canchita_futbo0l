@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agregar Canchas</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="admin-layout">
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h2>Administrador</h2>
+                <button class="menu-toggle">☰</button>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="admin.html" class="nav-item">
+                    <span class="icon">🏠</span> Volver
+                </a>
+                <a href="admin-canchas.html" class="nav-item active">
+                    <span class="icon">⚽</span> Canchas
+                </a>
+            </nav>
+        </aside>
+
+        <main class="admin-main">
+            <header class="admin-header">
+                <button class="btn-logout" onclick="location.href='index.html'">Cerrar Sesión</button>
+            </header>
+
+            <div class="admin-content">
+                <h1 class="page-title">Agregar Canchas</h1>
+                
+                <div class="form-cancha-container">
+                    <form id="formCancha" class="form-admin">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Tipo de cancha *</label>
+                                <select required>
+                                    <option value="">Seleccionar</option>
+                                    <option value="futbol">Fútbol</option>
+                                    <option value="baby">Baby Fútbol</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Estado de la cancha de *</label>
+                                <select required>
+                                    <option value="">Seleccionar</option>
+                                    <option value="disponible">Disponible</option>
+                                    <option value="mantenimiento">Mantenimiento</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Valor hora dia *</label>
+                                <input type="number" placeholder="25000" required>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Nombre de la cancha *</label>
+                                <input type="text" placeholder="cancha futbol 1" required>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn-agregar">Agregar</button>
+                    </form>
+
+                    <div class="cancha-illustration">
+                        <div class="soccer-field">⚽</div>
+                    </div>
+                </div>
+
+                <footer class="admin-footer">
+                    <p>Todos los derechos reservados © 2017.</p>
+                    <button class="btn-xi">Medellín, XVI</button>
+                </footer>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
